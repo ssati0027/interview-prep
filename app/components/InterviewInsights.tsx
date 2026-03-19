@@ -205,7 +205,7 @@ function SearchTab({ onSave }: { onSave: (e: SavedEntry) => void }) {
     (!showOnlyGaps || !q.covered_in_roadmap)
   )
 
-  const pillarsInResult = result ? [...new Set(allQ.map(q => q.pillar))] : []
+const pillarsInResult = result ? Array.from(new Set(allQ.map(q => q.pillar))) : []
   const coveredCount = allQ.filter(q => q.covered_in_roadmap).length
   const coveragePct = allQ.length ? Math.round(coveredCount / allQ.length * 100) : 0
 
