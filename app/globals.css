@@ -1,0 +1,169 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0c0e14;
+  --bg2: #13161f;
+  --bg3: #1a1d28;
+  --border: rgba(255,255,255,0.07);
+  --border-hi: rgba(255,255,255,0.14);
+  --text: #e8eaf0;
+  --muted: #7a7e93;
+  --dim: #4a4e63;
+  --font-sans: 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  /* Responsive spacing */
+  --px: 32px;
+  --px-sm: 16px;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
+
+/* ── Responsive utility classes ── */
+
+/* Responsive padding horizontal */
+.px { padding-left: var(--px); padding-right: var(--px); }
+
+/* Header responsive */
+.rm-header {
+  padding: 14px var(--px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  background: rgba(12,14,20,0.96);
+  backdrop-filter: blur(14px);
+  z-index: 20;
+}
+
+.rm-header-right {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Roadmap grid */
+.rm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+  gap: 1px;
+  background: var(--border);
+}
+
+/* Stats grid */
+.rm-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(160px, calc(50% - 6px)), 1fr));
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+/* Insight search 3-col → responsive */
+.insight-search-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+/* Login features 3-col */
+.login-feat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+/* Insight tabs */
+.insight-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+/* Hide email on very small screens */
+.rm-user-email {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+/* ── Mobile breakpoint ── */
+@media (max-width: 640px) {
+  :root {
+    --px: 16px;
+  }
+
+  .rm-header {
+    padding: 12px var(--px);
+    gap: 8px;
+  }
+
+  /* On mobile, hide some header clutter */
+  .rm-streak-long { display: none; }
+  .rm-user-email { display: none; }
+
+  /* Buttons smaller */
+  .rm-header-right {
+    gap: 5px;
+  }
+
+  /* Grid goes single column */
+  .rm-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stats 2-col */
+  .rm-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Search form stacks vertically */
+  .insight-search-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Login features 2-col */
+  .login-feat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Insight tabs scroll horizontally */
+  .insight-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .insight-tabs::-webkit-scrollbar { display: none; }
+  .insight-tabs button { flex-shrink: 0; }
+
+  /* Footer smaller */
+  .rm-footer p { font-size: 10px; }
+}
+
+@media (max-width: 420px) {
+  /* Stats single column on very small phones */
+  .rm-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rm-header-right .rm-btn-reset { display: none; }
+}
