@@ -118,7 +118,7 @@ Rules:
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GROQ_KEY}` },
     body: JSON.stringify({
-      model: 'llama-3.1-70b-versatile',
+      model: 'llama-3.3-70b-versatile',
       max_tokens: 4000,
       temperature: 0.2,
       messages: [{ role: 'user', content: prompt }],
